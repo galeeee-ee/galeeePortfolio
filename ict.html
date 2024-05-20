@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffb6c1; /* Pink background color */
+    }
+    #slides {
+      position: relative;
+      width: 70%;
+      margin: 50px auto;
+      background-color: #f2f2f2; /* Light gray background color */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .slide {
+      position: relative;
+      display: none;
+      text-align: center;
+      padding: 50px;
+      background-color: rgba(255, 192, 203, 0.8); /* Light pink background color with slight transparency */
+      border-radius: 10px; /* Rounded corners */
+    }
+    .active-slide {
+      display: block;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    h1, h2, p {
+      color: #333; /* Dark gray text color */
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffc0cb; /* Light pink background color */
+      padding: 20px; /* Increased padding */
+      border-radius: 10px; /* Rounded corners */
+    }
+    .content img {
+      width: 200px;
+      border-radius: 50%;
+    }
+    .content .greeting {
+      width: calc(70% - 200px); /* Adjust as needed */
+    }
+    .hearts::before,
+    .hearts::after {
+      content: "♥";
+      position: absolute;
+      color: #ff1493; /* Heart color */
+      font-size: 10px;
+      animation: hearts-float 8s linear infinite;
+    }
+
+    .hearts::before {
+      top: -10px;
+      left: 50%;
+    }
+
+    .hearts::after {
+      top: -10px;
+      left: 80%;
+    }
+
+    @keyframes hearts-float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="slides">
+  <div id="slide1" class="slide active-slide hearts">
+    <div class="content">
+      <img src="441995893_808530607516223_973348188255396381_n.jpg" alt="Your Picture">
+      <div class="greeting">
+        <h1>Hi, I'm Alyssa Gale O. Deposoy</h1>
+      </div>
+    </div>
+    <button class="prev" onclick="prevSlide()">Previous</button>
+    <button class="next" onclick="nextSlide()">Next</button>
+  </div>
+  <div id="slide2" class="slide hearts">
+    <h2>About Me</h2>
+    <p>My hobbies include:Playing chess!!</p>
+    <img src="hobby 1.jpg" alt="Hobby 1" style="width: 150px; margin-right: 10px; height:100px;">
+    <img src="hobby 2.jpg" alt="Hobby 2" style="width: 150px; margin-right: 10px; height:100px;">
+    <img src="hobby 3.jpg" alt="Hobby 3" style="width: 150px; height:100px;">
+    <p>I also like reading, eating and playing online games!!</p><br>
+   <p>But i dislike noisy people, and people who have ugly mindset</p>
+    <button class="prev" onclick="prevSlide()">Previous</button>
+    <button class="next" onclick="nextSlide()">Next</button>
+  </div>
+  <div id="slide3" class="slide hearts">
+    <h2>Social Info</h2>
+    <p>You can find me on:</p>
+    <ul>
+      <li>Facebook: Alyssa Deposoy</li>
+      <li>Instagram: galeeee_ee</li>
+      <!-- Add more social info as needed -->
+    </ul>
+    <button class="prev" onclick="prevSlide()">Previous</button>
+    <button class="next" onclick="nextSlide()">Next</button>
+  </div>
+  <div id="slide4" class="slide hearts">
+    <h2>Thank You!</h2>
+    <p>Thank you for visiting my portfolio.</p>
+    <button class="prev" onclick="prevSlide()">Previous</button>
+  </div>
+</div>
+
+<script>
+  var slideIndex = 1;
+  showSlide(slideIndex);
+
+  function nextSlide() {
+    showSlide(slideIndex += 1);
+  }
+
+  function prevSlide() {
+    showSlide(slideIndex -= 1);
+  }
+
+  function showSlide(n) {
+    var i;
+    var slides = document.getElementsByClassName("slide");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].classList.remove("active-slide");
+    }
+    slides[slideIndex - 1].classList.add("active-slide");
+  }
+
+  // Allow navigation using arrow keys
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "ArrowLeft") {
+      prevSlide();
+    } else if (event.key === "ArrowRight") {
+      nextSlide();
+    }
+  });
+</script>
+
+</body>
+</html>
